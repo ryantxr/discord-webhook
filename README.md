@@ -56,7 +56,7 @@ $webhookConfig = [
     ];
 $webhook = new Webhook( $webhookConfig );
 
-$embed = new Embed('YOUR_DISCORD_WEBHOOK_URL');
+$embed = new Embed('SOME_URL_YOU_WANT');
 $embed->title('This is a title')
             ->author('Justin', 'https://authors-website.com', 'https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png')
             ->field('Field 1', 'Some cool text', true )
