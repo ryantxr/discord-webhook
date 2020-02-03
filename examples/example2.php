@@ -16,7 +16,7 @@ class ExampleApp2
     public function run($msg)
     {
         $embed = new Embed;
-        $embed->title('A new post from Gay Goon')
+        $embed->title('A new post from example')
             ->author('Justin', 'https://bdsmlr.com', 'https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png')
             ->field('Field 1', 'Some cool text', true )
             ->field('Field 2', 'Another cool text', true )
