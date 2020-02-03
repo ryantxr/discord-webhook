@@ -84,11 +84,21 @@ class Embed
         $this->url = $url;
     }
 
+    public function config(array $args)
+    {
+        foreach ( $args as $key => $arg ) {
+            if ( isset($this->$key) ) {
+                $this->$key = $arg;
+            }
+        }
+    }
 
     public function title($title, $url = null)
     {
         $this->title = $title;
-        $this->url = $url;
+        if ( $url ) {
+            $this->url = $url;
+        }
         return $this;
     }
 

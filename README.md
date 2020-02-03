@@ -56,17 +56,15 @@ $webhookConfig = [
     ];
 $webhook = new Webhook( $webhookConfig );
 
+$embed = new Embed('YOUR_DISCORD_WEBHOOK_URL');
+$embed->title('This is a title')
+            ->author('Justin', 'https://authors-website.com', 'https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png')
+            ->field('Field 1', 'Some cool text', true )
+            ->field('Field 2', 'Another cool text', true )
+            ->color(15158332)
+            ;
 
-
-$embed = new Embed;
-$embed->config([
-    'title' => '',
-    'description' => '',
-    'color' => 1752220,
-
-]);
-$embed->
-$webhook->
+$webhook->send($embed, "A message goes here.");
 
 ```
 
