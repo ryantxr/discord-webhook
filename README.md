@@ -17,7 +17,7 @@ You can either copy the PHP files directly into your project or preferable just 
 
 Composer require command
 
-`composer require ryantxr/discord-webhooks`
+`composer require ryantxr/discord-webhook`
 
 ## Features
 
