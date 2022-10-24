@@ -1,6 +1,6 @@
 {
     "name": "ryantxr/discord-webhook",
-    "description": "Boilerplate package for creating other packages.",
+    "description": "Post messages to discord.",
     "keywords": ["discord", "webhook"],
     "license": "MIT",
     "authors": [
@@ -11,13 +11,15 @@
     ],
     "type": "library",
     "require": {
-		"php": ">=7.1",
+		"php": ">=7.1 | ^8.0",
         "guzzlehttp/guzzle": "^6.3",
         "psr/log": "^1.1",
         "nesbot/carbon": "^2.20"
     },
     "require-dev": {
-		"phpunit/phpunit": "7.*"
+		"phpunit/phpunit": "7.* | 8.*",
+        "squizlabs/php_codesniffer": "*",
+        "phpstan/phpstan": "^1.8"
     },
     "autoload": {
         "psr-4": {
