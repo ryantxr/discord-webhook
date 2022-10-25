@@ -2,6 +2,8 @@
 
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Psr7\Request;
+use Psr\Http\Client\ClientInterface;
+use GuzzleHttp\ClientInterface as GuzzleHttpClientInterface;
 
 /**
  *  Discord webhook client
@@ -18,14 +20,15 @@ class Client
     protected $username;
     /**  @var string $avatar avatar url (optional) */
     protected $avatar;
-    protected $client; // The guzzle client
+    protected $httpClient; // The guzzle client
 
     /**
      * Constructor
      * 
      * @param string|array $arg a webhook url string or an array with url, username, avatar
+     * @param GuzzleHttpClientInterface $httpClient replace with an httl client of your choice.
      */
-    public function __construct($arg)
+    public function __construct($arg, ?GuzzleHttpClientInterface $httpClient=null)
     {
         if ( is_string($arg) ) {
             $this->url = $arg;
@@ -34,7 +37,7 @@ class Client
             $this->username = $arg['username'] ?? null;
             $this->avatar = $arg['avatar'] ?? null;
         }
-        $this->client = new Guzzle;
+        $this->httpClient = $httpClient ?: new Guzzle;
     }
 
     /**
@@ -42,11 +45,11 @@ class Client
      *
      * @param string $text A string containing the message to send
      *
-     * @return void
+     * @return array
      */
-    public function message($text)
+    public function message($text) : array
     {
-        $this->post($text);
+        return $this->post($text);
     }
 
     /**
@@ -81,14 +84,14 @@ class Client
                     'content' => $data
                 ]
             ];
-            $response = $this->client->send($request, $params);
+            $response = $this->httpClient->send($request, $params);
         } elseif ( is_array($data) ) {
             $request = new Request('POST', $this->url, ['Content-Type' => 'application/json']);
             // print_r($data);
             $params = [
                 'json' => $data
             ];
-            $response = $this->client->send($request, $params);
+            $response = $this->httpClient->send($request, $params);
         }
         if ( is_object($response) ) {
             $code = $response->getStatusCode(); // 200

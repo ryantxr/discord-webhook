@@ -1,3 +1,4 @@
-/vendor/
+vendor/
 *.code-workspace
 .DS_Store
+.phpunit.result.cache
